@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>Validacion</servlet-name>
+  	<display-name>Validacion</display-name>
+  	<description></description>
+  	<servlet-class>com.curso.java.servlets.Validacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Validacion</servlet-name>
+  	<url-pattern>/Validacion</url-pattern>
+  </servlet-mapping>
 </web-app>
