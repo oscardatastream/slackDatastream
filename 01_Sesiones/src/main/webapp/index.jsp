@@ -1,3 +1,4 @@
+<%@page import="com.curso.java.entidades.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,15 +17,14 @@
 
 <body>
 
-    <%
-		String haySesionUsuario = (String) session.getAttribute("haySesion");
+	<%
+		Usuario usuario = (Usuario) session.getAttribute("sesionUsuario");
 
-		if (haySesionUsuario != null && haySesionUsuario.equals("si")) {
+		if (usuario != null) {
 			response.sendRedirect("bienvenido.jsp");
 		}
 	%>
-    <form action="sesiones" method="GET">
-        <input type="hidden" name="iniciar" value="true">
+	<form action="sesiones" method="POST">
         <label for="usuario">Usuario</label>
         <input id="usuario" type="text" name="usuario">
         <label for="clave">Clave</label> 
@@ -32,17 +32,16 @@
         <button>Enviar</button>
     </form>
     <div>
-        <h3 style="color: red; text-align: center;">
-            <%
- 	if (haySesionUsuario != null && haySesionUsuario.equals("no")) {
- 		out.print("*Usuario Invalido");
- 	}
- %>
+		<h3 style="color: red; text-align: center;">
+			<%
+				String error = (String) request.getAttribute("error");
+				out.print((error != null ? error : ""));
+			%>
 
-        </h3>
+		</h3>
 
 
-    </div>
+	</div>
 
 
 </body>

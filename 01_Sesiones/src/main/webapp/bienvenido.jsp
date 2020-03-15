@@ -15,16 +15,15 @@
 
 <body>
 	<%
-		String haySesionUsuario = (String) session.getAttribute("haySesion");
+		Usuario usuario = (Usuario) session.getAttribute("sesionUsuario");
 
-		if (haySesionUsuario != null) {
-			Usuario usuario = (Usuario) session.getAttribute("sesionUsuario");
+		if (usuario != null) {
 	%>
 	<h1 style="color: darkolivegreen;">
 		Bienvenido&nbsp;<span style="background-color: darkolivegreen; color: #ffffff; padding: 0 5px;">
 
 			<%
-				out.print(usuario.getUsuario());
+				out.print(usuario.getUsuario() + " hay " + usuario.getCantidad() + " usuarios conectados");
 			%>
 
 		</span>...
@@ -36,6 +35,8 @@
 	<p></p>
 
 	<%
+		}else{
+			response.sendRedirect("index.jsp");
 		}
 	%>
 

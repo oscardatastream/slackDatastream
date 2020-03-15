@@ -3,26 +3,31 @@
  */
 package com.curso.java.entidades;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
- * @author Octavio Robleto
- * Clase para crear Usuarios
+ * @author Octavio Robleto Clase para crear Usuarios
  */
 public class Usuario {
 	private String usuario;
 	private String clave;
+	private Integer id;
+	static AtomicInteger CANTIDAD_USUARIOS = new AtomicInteger(0);
 
 	/**
 	 * @param usuario
 	 * @param clave
 	 */
 	public Usuario(String usuario, String clave) {
+		CANTIDAD_USUARIOS.getAndIncrement();
 		this.usuario = usuario;
 		this.clave = clave;
+		this.id = getCantidad(); 
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [usuario=" + usuario + ", clave=" + clave + "]";
+		return id + "\t" + usuario;
 	}
 
 	/**
@@ -51,6 +56,28 @@ public class Usuario {
 	 */
 	public void setClave(String clave) {
 		this.clave = clave;
+	}
+	
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+
+	/**
+	 * @return the cantidad
+	 */
+	public static int getCantidad() {
+		return CANTIDAD_USUARIOS.intValue();
 	}
 
 	@Override
