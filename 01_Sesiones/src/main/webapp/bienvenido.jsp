@@ -2,40 +2,67 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>Bienvenido</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<link rel='stylesheet' type='text/css' media='screen' href='css/formularios.css'>
+	<!--     <link rel='stylesheet' type='text/css' media='screen' href='css/formularios.css'> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src='main.js'></script>
+	<title>Clase 01 - Sesiones JSP</title>
+
 </head>
 
 <body>
+
+	<div class="jumbotron text-center">
+		<h1>Java EE</h1>
+		<p>Mi primera pagina con sesiones</p>
+	</div>
+
 	<%
 		Usuario usuario = (Usuario) session.getAttribute("sesionUsuario");
 
 		if (usuario != null) {
 	%>
-	<h1 style="color: darkolivegreen;">
-		Bienvenido&nbsp;<span style="background-color: darkolivegreen; color: #ffffff; padding: 0 5px;">
+	<!-- Left-aligned media object -->
+	<div class="container">
+		<div class="media">
+			<div class="media-left">
+				<img src="img/Perfil 4 CF.jpeg" class="media-object"
+					style="width: 150px">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading"><%="ID["+usuario.getId()+"] - "+usuario.getUsuario().toUpperCase()%></h4>
+				<p>Cada vez que un usuario crea una sesión accediendo a una página (siempre y cuando se genere desde el
+					código) se crea un objeto a nivel de Servidor con un HashMap vacío que nos permite almacenar la
+					información que necesitamos relativa a este usuario </p>
+				<p>
+					En este caso se generó el ID
+					<kbd><%=session.getId()%></kbd>
+					único para cada sesión
+				</p>
+				<div>
+					<p>Usuarios del sistema
+						<span class="label label-danger"> <%=usuario.getCantidad()%></span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-			<%
-				out.print(usuario.getUsuario() + " hay " + usuario.getCantidad() + " usuarios conectados");
-			%>
+	<div class="container">
+		<a href="sesiones?iniciar=false" class="btn btn-link" role="button">Cerrar
+			Sesion</a>
+	</div>
 
-		</span>...
-	</h1>
-	<p></p>
-	<p>
-		<a href="sesiones?iniciar=false">Cerrar Sesion</a>
-	</p>
-	<p></p>
 
 	<%
-		}else{
+		} else {
 			response.sendRedirect("index.jsp");
 		}
 	%>
