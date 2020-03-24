@@ -1,12 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.curso.java</groupId>
-	<artifactId>01_Sesiones</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.2-SNAPSHOT</version>
-	<name>01_Sesiones Maven Webapp</name>
+
+	<groupId>com.curo.java</groupId>
+	<artifactId>02_01_WS_Server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>02_01_WS_Server</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -15,16 +17,9 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
-			<scope>provided</scope>
-		</dependency>
 	</dependencies>
 	<build>
-		<finalName>01_Sesiones</finalName>
+		<finalName>02_01_WS_Server</finalName>
 		<defaultGoal>package</defaultGoal>
 		<pluginManagement>
 			<plugins>
@@ -44,4 +39,6 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
+
 </project>

@@ -5,15 +5,34 @@
 <html lang="es">
 
 <head>
-	<meta charset='utf-8'>
-	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<!--     <link rel='stylesheet' type='text/css' media='screen' href='css/formularios.css'> -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src='main.js'></script>
-	<title>Clase 01 - Sesiones JSP</title>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!--     <link rel='stylesheet' type='text/css' media='screen' href='css/formularios.css'> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src='main.js'></script>
+<title>Clase 01 - Sesiones JSP</title>
+
+<script type="text/javascript">
+	function mostrarClave() {
+		var cambio = document.getElementById("clave");
+		var boton = document.getElementById("verClaveSpam");
+		if (cambio.type == "password") {
+			cambio.type = "text";
+			$(boton).removeClass('glyphicon glyphicon-eye-open').addClass(
+					'glyphicon glyphicon-eye-close');
+		} else {
+			cambio.type = "password";
+			$(boton).removeClass('glyphicon glyphicon-eye-close').addClass(
+					'glyphicon glyphicon-eye-open');
+		}
+	}
+</script>
 
 </head>
 
@@ -32,15 +51,37 @@
 		}
 	%>
 	<%
-		String error = (String) request.getAttribute("error");
-		if (error != null) {
+		String alerta = (String) request.getAttribute("alerta");
+		String tipo = "";
+		String mensaje = "";
+		//Credenciales incorrectas, intente de nuevo... warning
+		if (alerta != null) {
+
+			switch (alerta) {
+			case "CREDENCIALES":
+				tipo = "alert-danger";
+				mensaje = " <strong>ERROR! </strong>Credenciales incorrectas, intente de nuevo...";
+				break;
+			case "SESION":
+				tipo = "alert-warning";
+				mensaje = " <strong>ADVERTENCIA! </strong>ha cerrado sesion correctamente...";
+				break;
+			}
 	%>
 
 	<div class="container">
-		<div class="alert alert-danger alert-dismissible">
-			<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>ERROR! </strong> <%=error%>
+
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<%
+				out.print("<div class=\"alert " + tipo + " alert-dismissible\">");
+					out.print("<a class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>");
+					out.print(mensaje);
+					out.print("</div>");
+			%>
 		</div>
+
+		<div class="col-sm-3"></div>
 	</div>
 	<%
 		}
@@ -48,30 +89,43 @@
 
 	<div class="container">
 
-		<form action="sesiones" method="POST">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
 
-			<div class="input-group">
+			<form action="sesiones" method="POST">
 
-				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<input type="text" class="form-control" name="usuario" id="usuario" placeholder="usuario">
-			</div>
-			<p></p>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> <input type="password"
-					class="form-control" name="clave" id="clave" placeholder="clave">
-			</div>
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<div>
-				<button type="submit" class="btn btn-primary btn-block">Enviar</button>
-			</div>
-		</form>
+				<div class="input-group">
+
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> <input type="text"
+						class="form-control" name="usuario" id="usuario"
+						placeholder="usuario">
+				</div>
+				<p></p>
+				<div class="input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-lock"></i></span> <input type="password"
+						class="form-control" name="clave" id="clave" placeholder="clave">
+					<button id="verClave" name="verClave"
+						class="btn btn-default btn-block" type="button"
+						onclick="mostrarClave()">
+						<span id="verClaveSpam" class="glyphicon glyphicon-eye-open"></span>
+					</button>
+
+				</div>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<div>
+
+					<button type="submit" class="btn btn-primary btn-block">Enviar</button>
+				</div>
+			</form>
+			<div class="col-sm-3"></div>
+		</div>
+
 	</div>
-	<div></div>
-
-
 </body>
 
 </html>

@@ -57,7 +57,14 @@ public class Validacion extends HttpServlet {
 		//si entra por el metodo get a la URL invalidamos la sesion si existe
 		if (request.getSession().getId() != null) {
 			request.getSession().invalidate();
-			response.sendRedirect("index.jsp");
+			
+			//seteamos el atributo mensaje
+			request.setAttribute("alerta", "SESION");
+				
+			//reenviamos la peticion con los objetos request y response
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		
 		}
 
 	}
@@ -92,7 +99,7 @@ public class Validacion extends HttpServlet {
 			
 		} else {
 			//seteamos el atributo mensaje
-			request.setAttribute("error", "Credenciales incorrectas, intente de nuevo...");
+			request.setAttribute("alerta", "CREDENCIALES");
 				
 			//reenviamos la peticion con los objetos request y response
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");

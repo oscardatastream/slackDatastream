@@ -6,7 +6,7 @@ _Aprenderemos a desarrollar Aplicaciones Web Empresariales con JAVA EE y JSP_
 
 * [Eclipse](https://www.eclipse.org/downloads/packages/release/2019-09/r/eclipse-ide-enterprise-java-developers) - El entorno de desarrollo mas usado a nivel profesional
 * [Maven](https://maven.apache.org/) - Gestor de dependencias (librerías) y sus versiones
-* [ROME](https://tomcat.apache.org/download-90.cgi) - Servidores web
+* [Tomcat](https://tomcat.apache.org/download-90.cgi) - Servidores web
 
 ## Autor ✒️
 
