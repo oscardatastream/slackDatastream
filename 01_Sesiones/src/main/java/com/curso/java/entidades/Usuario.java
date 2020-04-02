@@ -6,8 +6,11 @@ package com.curso.java.entidades;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author Octavio Robleto Clase para crear Usuarios
+ * @author Octavio Robleto
+ * @see https://orobleto.github.io/octaviorobleto.github.io/
+ * 
  */
+
 public class Usuario {
 	private String usuario;
 	private String clave;

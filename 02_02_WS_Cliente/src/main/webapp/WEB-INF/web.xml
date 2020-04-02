@@ -5,13 +5,13 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>Validacion</servlet-name>
-  	<display-name>Validacion</display-name>
+  	<servlet-name>CadenasS</servlet-name>
+  	<display-name>CadenasS</display-name>
   	<description></description>
-  	<servlet-class>com.curso.java.servlets.Validacion</servlet-class>
+  	<servlet-class>com.curso.java.servlets.CadenasS</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Validacion</servlet-name>
-  	<url-pattern>/Validacion</url-pattern>
+  	<servlet-name>CadenasS</servlet-name>
+  	<url-pattern>/transformar2</url-pattern>
   </servlet-mapping>
 </web-app>

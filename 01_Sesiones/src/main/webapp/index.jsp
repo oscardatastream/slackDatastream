@@ -1,6 +1,12 @@
 <%@page import="com.curso.java.entidades.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<!-- /**
+ * @author Octavio Robleto
+ * @see https://orobleto.github.io/octaviorobleto.github.io/
+ * 
+ */ -->	
+	
 <!DOCTYPE html>
 <html lang="es">
 
@@ -99,13 +105,13 @@
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-user"></i></span> <input type="text"
 						class="form-control" name="usuario" id="usuario"
-						placeholder="usuario">
+						placeholder="usuario" required>
 				</div>
 				<p></p>
 				<div class="input-group">
 					<span class="input-group-addon"> <i
 						class="glyphicon glyphicon-lock"></i></span> <input type="password"
-						class="form-control" name="clave" id="clave" placeholder="clave">
+						class="form-control" name="clave" id="clave" placeholder="clave" required>
 					<button id="verClave" name="verClave"
 						class="btn btn-default btn-block" type="button"
 						onclick="mostrarClave()">
