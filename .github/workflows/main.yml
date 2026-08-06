@@ -1,0 +1,20 @@
+name: Checkmarx One Scan
+on:
+  push:
+    branches:
+      - main
+      - testActions1
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: TestActions
+          cx_tenant: nfr_datastream
+          base_uri: https://ast.checkmarx.net/
+          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
