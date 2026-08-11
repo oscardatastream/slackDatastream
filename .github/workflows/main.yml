@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - testActions1
+      //test1
 jobs:
   build:
     runs-on: ubuntu-latest
